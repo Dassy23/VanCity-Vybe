@@ -1,4 +1,5 @@
 from django.db import models
+import requests
 
 class Post(models.Model):
 
