@@ -13,8 +13,10 @@
         </div>
         <div class="card-body">
           <ul class="list-unstyled mt-3 mb-4">
-            {% for title in titles %}
+            {% for title,image in movie_info %}
               <li> {{ title }} </li>
+              <img class="first-slide img-fluid" style="overflow:hidden;" src="{{ image }}" >
+              <hr>
             {% endfor %}
           </ul>
         </div>
