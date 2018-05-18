@@ -2,38 +2,30 @@
 {% load staticfiles %}
 {% block content %}
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-  <h1 class="display-4">Whats On Popcorn Time</h1>
-  <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It's built with default Bootstrap components and utilities with little customization.</p>
+  <h1 class="display-4">Trending Movies Currently Available</h1>
+  <p class="lead">Feel like vegging out on the couch tonight? Check out these trending movies.</p>
 </div>
 <div class="container">
-    <div class="card-deck mb-3 text-center">
-      <div class="card mb-4 box-shadow">
-        <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Movies</h4>
-        </div>
-        <div class="card-body">
-          <ul class="list-unstyled mt-3 mb-4">
-            {% for title,image in movie_info %}
-              <li> {{ title }} </li>
-              <img class="first-slide img-fluid" style="overflow:hidden;" src="{{ image }}" >
-              <hr>
-            {% endfor %}
-          </ul>
-        </div>
+  <div class="row">
+    {% for title,image,summary in movie_info %}
+      <div class="col-md-4">
+          <div class="card card-plain card-blog">
+              <div class="card-image">
+                  <a href="#pablo">
+                      <img class="img rounded img-raised img-fluid"  src="{{ image }}" height=250 width=100% />
+                  </a>
+              </div>
+              <div class="card-body">
+                  <h4 class="card-title">
+                       {{ title }}
+                  </h4>
+                  <p class="card-description">
+                      {{ summary|truncatewords:40 }}
+                      <a href="#"> Read More </a>
+                  </p>
+              </div>
+          </div>
       </div>
-      <div class="card mb-4 box-shadow">
-        <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Series</h4>
-        </div>
-        <div class="card-body">
-          <ul class="list-unstyled mt-3 mb-4">
-            <ul class="list-unstyled mt-3 mb-4">
-              {% for title in titles %}
-                <li> {{ title }} </li>
-              {% endfor %}
-            </ul>
-          </ul>
-        </div>
-      </div>
+      {% endfor %}
 
 {% endblock %}

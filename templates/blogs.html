@@ -1,108 +1,202 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+
 <!-- START THE FEATURETTES -->
 {% block content %}
+<link href="{% static "/css/milo.scss" %}" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-<link href="{% static "/css/bootstrap.min.css" %}" rel="stylesheet" />
-<link href="{% static "/css/now-ui-kit.css?v=1.2.0" %}" rel="stylesheet" />
-<br />
-<br />
-<div class="main">
-       <div class="container">
-           <div class="section">
-               <h3 class="title text-center">Featured Posts</h3>
-               <br />
-               <div class="row">
-                 {% with object_list.0 as post %}
-                 {% if post %}
-                   <div class="col-md-4">
-                       <div class="card card-plain card-blog">
-                           <div class="card-image">
-                               <a href="#pablo">
-                                   <img class="img rounded img-raised img-fluid"  src="{{ post.image.url }}" height=250 width=100% />
-                               </a>
-                           </div>
-                           <div class="card-body">
-                               <h6 class="category text-info">{{ post.tag }}</h6>
-                               <h4 class="card-title">
-                                    <a href="#">{{ post.title }}</a>
-                               </h4>
-                               <p class="card-description">
-                                   {{ post.body|truncatewords:40 }}
-                                   <a href="{% url "post_detail" post.pk%}"> Read More </a>
-                                   <div class="author">
-                                       <img src="../assets/img/olivia.jpg" alt="..." class="avatar img-raised">
-                                       <span>{{ post.author }}</span>
-                                   </div>
-                               </p>
-                           </div>
-                       </div>
-                   </div>
-                   {% endif %}
-                   {% endwith %}
 
-                   {% with object_list.1 as post %}
-                   {% if post %}
-                   <div class="col-md-4">
-                       <div class="card card-plain card-blog">
-                           <div class="card-image">
-                               <a href="#pablo">
-                                   <img class="img rounded img-raised img-fluid" src="{{ post.image.url }}" height=250 width=100% />
-                               </a>
-                           </div>
-                           <div class="card-body">
-                               <h6 class="category text-success">
-                                   {{ post.tag }}
-                               </h6>
-                               <h4 class="card-title">
-                                   <a href="#pablo">{{ post.title }}</a>
-                               </h4>
-                               <p class="card-description">
-                                   {{ post.body|truncatewords:40 }}
-                                   <a href="{% url "post_detail" post.pk%}"> Read More </a>
-                                   <div class="author">
-                                       <img src="../assets/img/michael.jpg" alt="..." class="avatar img-raised">
-                                       <span>{{ post.author }}</span>
-                                   </div>
-                               </p>
-                           </div>
-                       </div>
-                   </div>
-                   {% endif %}
-                   {% endwith %}
+<main class="main pt-4" role="main">
+  <div class="container">
+      <div class="section">
+          <h3 class="title text-center">Featured Posts</h3>
+          <br />
+          <div class="row">
+            {% with object_list.0 as post %}
+            {% if post %}
+              <div class="col-md-4">
+                  <div class="card card-plain card-blog">
+                      <div class="card-image">
+                          <a href="#pablo">
+                              <img class="img rounded img-raised img-fluid"  src="{{ post.image.url }}" height=250 width=100% />
+                          </a>
+                      </div>
+                      <div class="card-body">
+                          <h6 class="category text-info">{{ post.tag }}</h6>
+                          <h4 class="card-title">
+                               <a href="#">{{ post.title }}</a>
+                          </h4>
+                          <p class="card-description">
+                              {{ post.body|truncatewords:40 }}
+                              <a href="{% url "post_detail" post.pk%}"> Read More </a>
+                              <div class="author">
+                                  <img src="../assets/img/olivia.jpg" alt="..." class="avatar img-raised">
+                                  <span>{{ post.author }}</span>
+                              </div>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              {% endif %}
+              {% endwith %}
 
-                   {% with object_list.2 as post %}
-                   {% if post %}
-                   <div class="col-md-4">
-                       <div class="card card-plain card-blog">
-                           <div class="card-image">
-                               <a href="#pablo">
-                                   <img class="img rounded img-raised img-fluid" src="{{ post.image.url }}" height=250 width=100% />
-                               </a>
-                           </div>
-                           <div class="card-body">
-                               <h6 class="category text-danger">
-                                   <i class="now-ui-icons media-2_sound-wave"></i>
-                                   {{ post.tag }}
-                               </h6>
-                               <h4 class="card-title">
-                                   <a href="#pablo">{{ post.title }}</a>
-                               </h4>
-                               <p class="card-description">
-                                 {{ post.body|truncatewords:40 }}
-                                 <a href="{% url "post_detail" post.pk%}"> Read More </a>
-                                   <div class="author">
-                                       <img src="../assets/img/james.jpg" alt="..." class="avatar img-raised">
-                                       <span>{{ post.author }}</span>
-                                   </div>
-                               </p>
-                           </div>
-                       </div>
-                   </div>
-                   {% endif %}
-                  {% endwith %}
-               </div>
-           </div>
-       </div>
+              {% with object_list.1 as post %}
+              {% if post %}
+              <div class="col-md-4">
+                  <div class="card card-plain card-blog">
+                      <div class="card-image">
+                          <a href="#pablo">
+                              <img class="img rounded img-raised img-fluid" src="{{ post.image.url }}" height=250 width=100% />
+                          </a>
+                      </div>
+                      <div class="card-body">
+                          <h6 class="category text-success">
+                              {{ post.tag }}
+                          </h6>
+                          <h4 class="card-title">
+                              <a href="#pablo">{{ post.title }}</a>
+                          </h4>
+                          <p class="card-description">
+                              {{ post.body|truncatewords:40 }}
+                              <a href="{% url "post_detail" post.pk%}"> Read More </a>
+                              <div class="author">
+                                  <img src="../assets/img/michael.jpg" alt="..." class="avatar img-raised">
+                                  <span>{{ post.author }}</span>
+                              </div>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              {% endif %}
+              {% endwith %}
+
+              {% with object_list.2 as post %}
+              {% if post %}
+              <div class="col-md-4">
+                  <div class="card card-plain card-blog">
+                      <div class="card-image">
+                          <a href="#pablo">
+                              <img class="img rounded img-raised img-fluid" src="{{ post.image.url }}" height=250 width=100% />
+                          </a>
+                      </div>
+                      <div class="card-body">
+                          <h6 class="category text-danger">
+                              <i class="now-ui-icons media-2_sound-wave"></i>
+                              {{ post.tag }}
+                          </h6>
+                          <h4 class="card-title">
+                              <a href="#pablo">{{ post.title }}</a>
+                          </h4>
+                          <p class="card-description">
+                            {{ post.body|truncatewords:40 }}
+                            <a href="{% url "post_detail" post.pk%}"> Read More </a>
+                              <div class="author">
+                                  <img src="../assets/img/james.jpg" alt="..." class="avatar img-raised">
+                                  <span>{{ post.author }}</span>
+                              </div>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              {% endif %}
+             {% endwith %}
+
+          </div>
+        <br />
+        <br />
+        <br />
+        <div class="row">
+
+
+          <div class="col-md-9">
+            {% for post in object_list %}
+
+            <article class="card mb-4">
+              <header class="card-header">
+                <div class="card-meta">
+                  <a href="#"><time class="timeago" datetime="2017-10-26 20:00">26 october 2017</time></a> in <a href="#">{{ post.tag }}</a>
+                </div>
+                <a href="post-image.html">
+                  <h4 class="card-title">{{ post.title }}</h4>
+                </a>
+              </header>
+              <a href="post-image.html">
+                <img class="card-img" src="{{ post.image.url }}"  alt="" />
+              </a>
+              <div class="card-body">
+                <p class="card-text">{{ post.body|truncatewords:300 }} </p>
+              </div>
+            </article><!-- /.card -->
+            {% endfor %}
+            </div>
+            <div class="col-md-3 ml-auto">
+
+              <aside class="sidebar">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <h4 class="card-title">About</h4>
+                    <p class="card-text">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam <a href="#">semper libero</a>, sit amet adipiscing sem neque sed ipsum. </p>
+                  </div>
+                </div><!-- /.card -->
+              </aside>
+
+              <aside class="sidebar sidebar-sticky">
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <h4 class="card-title">Tags</h4>
+                    <a class="btn btn-light btn-sm mb-1" href="#">Journey</a>
+                    <a class="btn btn-light btn-sm mb-1" href="#">Work</a>
+                    <a class="btn btn-light btn-sm mb-1" href="#">Lifestype</a>
+                    <a class="btn btn-light btn-sm mb-1" href="#">Photography</a>
+                    <a class="btn btn-light btn-sm mb-1" href="#">Food & Drinks</a>
+                  </div>
+                </div><!-- /.card -->
+                <div class="card mb-4">
+                  <div class="card-body">
+                    <h4 class="card-title">Popular stories</h4>
+
+                    <a href="post-image.html" class="d-inline-block">
+                      <h4 class="h6">The blind man</h4>
+                      <img class="card-img" src="img/2.jpg" alt="" />
+                    </a>
+                    <time class="timeago" datetime="2017-10-03 20:00">3 october 2017</time> in Lifestyle
+
+                    <a href="post-image.html" class="d-inline-block mt-3">
+                      <h4 class="h6">Crying on the news</h4>
+                      <img class="card-img" src="img/3.jpg" alt="" />
+                    </a>
+                    <time class="timeago" datetime="2017-07-16 20:00">16 july 2017</time> in Work
+
+                  </div>
+                </div><!-- /.card -->
+              </aside>
+            </div>
+          </div>
+        </div>
+
+
+<div class="site-newsletter">
+  <div class="container">
+    <div class="text-center">
+      <h3 class="h4 mb-2">Subscribe to our newsletter</h3>
+      <p class="text-muted">Join our monthly newsletter and never miss out on new stories and promotions.</p>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-9 col-md-7 col-lg-5 ml-auto mr-auto">
+          <div class="input-group mb-3 mt-3">
+            <input type="text" class="form-control" placeholder="Email address" aria-label="Email address">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="button">Subscribe</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="{% static "/js/bundle.js" %}"></script>
 {% endblock content %}
