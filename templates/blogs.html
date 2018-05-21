@@ -3,18 +3,17 @@
 
 <!-- START THE FEATURETTES -->
 {% block content %}
-<link href="{% static "/css/milo.scss" %}" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+<link href="{% static url %}css/milo.css" rel="stylesheet">
 
 <main class="main pt-4" role="main">
   <div class="container">
       <div class="section">
+        {% if posts.all|length >= 2 %}
           <h3 class="title text-center">Featured Posts</h3>
           <br />
           <div class="row">
-            {% with object_list.0 as post %}
-            {% if post %}
+            {% for post in featured.all %}
+
               <div class="col-md-4">
                   <div class="card card-plain card-blog">
                       <div class="card-image">
@@ -29,79 +28,16 @@
                           </h4>
                           <p class="card-description">
                               {{ post.body|truncatewords:40 }}
-                              <a href="{% url "post_detail" post.pk%}"> Read More </a>
+                              <a href="{% url "post_detail" post.id %}"> Read More </a>
                               <div class="author">
-                                  <img src="../assets/img/olivia.jpg" alt="..." class="avatar img-raised">
                                   <span>{{ post.author }}</span>
                               </div>
                           </p>
                       </div>
                   </div>
               </div>
+              {% endfor %}
               {% endif %}
-              {% endwith %}
-
-              {% with object_list.1 as post %}
-              {% if post %}
-              <div class="col-md-4">
-                  <div class="card card-plain card-blog">
-                      <div class="card-image">
-                          <a href="#pablo">
-                              <img class="img rounded img-raised img-fluid" src="{{ post.image.url }}" height=250 width=100% />
-                          </a>
-                      </div>
-                      <div class="card-body">
-                          <h6 class="category text-success">
-                              {{ post.tag }}
-                          </h6>
-                          <h4 class="card-title">
-                              <a href="#pablo">{{ post.title }}</a>
-                          </h4>
-                          <p class="card-description">
-                              {{ post.body|truncatewords:40 }}
-                              <a href="{% url "post_detail" post.pk%}"> Read More </a>
-                              <div class="author">
-                                  <img src="../assets/img/michael.jpg" alt="..." class="avatar img-raised">
-                                  <span>{{ post.author }}</span>
-                              </div>
-                          </p>
-                      </div>
-                  </div>
-              </div>
-              {% endif %}
-              {% endwith %}
-
-              {% with object_list.2 as post %}
-              {% if post %}
-              <div class="col-md-4">
-                  <div class="card card-plain card-blog">
-                      <div class="card-image">
-                          <a href="#pablo">
-                              <img class="img rounded img-raised img-fluid" src="{{ post.image.url }}" height=250 width=100% />
-                          </a>
-                      </div>
-                      <div class="card-body">
-                          <h6 class="category text-danger">
-                              <i class="now-ui-icons media-2_sound-wave"></i>
-                              {{ post.tag }}
-                          </h6>
-                          <h4 class="card-title">
-                              <a href="#pablo">{{ post.title }}</a>
-                          </h4>
-                          <p class="card-description">
-                            {{ post.body|truncatewords:40 }}
-                            <a href="{% url "post_detail" post.pk%}"> Read More </a>
-                              <div class="author">
-                                  <img src="../assets/img/james.jpg" alt="..." class="avatar img-raised">
-                                  <span>{{ post.author }}</span>
-                              </div>
-                          </p>
-                      </div>
-                  </div>
-              </div>
-              {% endif %}
-             {% endwith %}
-
           </div>
         <br />
         <br />
@@ -110,12 +46,12 @@
 
 
           <div class="col-md-9">
-            {% for post in object_list %}
+            {% for post in posts.all %}
 
             <article class="card mb-4">
               <header class="card-header">
                 <div class="card-meta">
-                  <a href="#"><time class="timeago" datetime="2017-10-26 20:00">26 october 2017</time></a> in <a href="#">{{ post.tag }}</a>
+                  <a href="#"><time class="timeago">{{ post.pub_date }}</time></a> in <a href="#">{{ post.tag }}</a>
                 </div>
                 <a href="post-image.html">
                   <h4 class="card-title">{{ post.title }}</h4>
@@ -136,7 +72,7 @@
                 <div class="card mb-4">
                   <div class="card-body">
                     <h4 class="card-title">About</h4>
-                    <p class="card-text">Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam <a href="#">semper libero</a>, sit amet adipiscing sem neque sed ipsum. </p>
+                    <p class="card-text"> Vancity Vybe was made to provide the best information for Vancouverites to explore, discover and get the most out of the this beautiful city. If you have any questions hit me up at vancityvybe@gmail.com.  </p>
                   </div>
                 </div><!-- /.card -->
               </aside>
@@ -145,11 +81,9 @@
                 <div class="card mb-4">
                   <div class="card-body">
                     <h4 class="card-title">Tags</h4>
-                    <a class="btn btn-light btn-sm mb-1" href="#">Journey</a>
-                    <a class="btn btn-light btn-sm mb-1" href="#">Work</a>
-                    <a class="btn btn-light btn-sm mb-1" href="#">Lifestype</a>
-                    <a class="btn btn-light btn-sm mb-1" href="#">Photography</a>
-                    <a class="btn btn-light btn-sm mb-1" href="#">Food & Drinks</a>
+                    {% for tag in tags %}
+                    <a class="btn btn-light btn-sm mb-1" href="#">{{ tag }}</a>
+                    {% endfor %}
                   </div>
                 </div><!-- /.card -->
                 <div class="card mb-4">

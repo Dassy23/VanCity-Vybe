@@ -1,4 +1,4 @@
-import "{% static url %}css/milo.scss"; // Import CSS
+import '../css/milo.scss'; // Import CSS
 import 'bootstrap'; // Import Bootstrap's JavaScript
 import timeago from 'timeago.js'; // Import timeago
 
